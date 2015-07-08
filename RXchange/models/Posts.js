@@ -21,7 +21,7 @@ var PostSchema = new mongoose.Schema({
 });
 
 PostSchema.methods.upvote = function(cb) {
-  this.upvotes += 1;
+  this.interests += 1;
   this.save(cb);
 };
 

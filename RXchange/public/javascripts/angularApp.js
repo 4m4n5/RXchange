@@ -57,6 +57,12 @@ app.factory('posts', ['$http',
         o.posts.push(data);
       });
     };
+    o.upvote = function(post) {
+      return $http.put('/posts/' + post._id + '/upvote')
+        .success(function(data) {
+          post.interests += 1;
+        });
+    };
     return o;
   }
 ]);
@@ -92,7 +98,7 @@ app.controller('MainCtrl', [
       if (!$scope.room_no || $scope.room_no === '' || !$scope.name || $scope.name === '') {
         return;
       }
-      $scope.posts.push({
+      posts.create({
         room_no: $scope.room_no,
         name: $scope.name,
         preference: $scope.preference,
@@ -100,15 +106,6 @@ app.controller('MainCtrl', [
         email: $scope.email,
         password: $scope.password,
         interests: 0,
-        comments: [{
-          author: 'Bablooo',
-          body: 'Alag he machai!',
-          upvotes: 0
-        }, {
-          author: 'Tiploo',
-          body: 'Girls hostel dikhta hai iha se!',
-          upvotes: 10
-        }]
       });
       $scope.room_no = '';
       $scope.name = '';
@@ -119,7 +116,7 @@ app.controller('MainCtrl', [
     };
     $scope.incrementInterests = function(post) {
       console.log(post);
-      post.interests += 1;
+      posts.upvote(post);
     };
   }
 ]);
