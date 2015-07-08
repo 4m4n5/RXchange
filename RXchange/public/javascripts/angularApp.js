@@ -100,7 +100,7 @@ app.factory('auth', ['$http', '$window',
       });
     };
     auth.logOut = function() {
-      $window.localStorage.removeItem('flapper-news-token');
+      $window.localStorage.removeItem('rxchange-token');
     };
     return auth;
   }
