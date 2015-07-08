@@ -94,6 +94,9 @@ app.controller('PostsCtrl', [
   '$stateParams',
   'posts',
   function($scope, $stateParams, posts) {
-
+    $scope.post = posts.posts[$stateParams.id];
+    $scope.incrementUpvotes = function(post) {
+      post.upvotes += 1;
+    };
   }
 ]);

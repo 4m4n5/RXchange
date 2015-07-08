@@ -26,6 +26,9 @@
             <span style="font-size:20px; margin-left:10px;">
               {{post.room_no}} - submitted by: {{post.name}}
             </span>
+            <span>
+              <a href="#/posts/{{$index}}">Comments</a>
+            </span>
           </div>
 
           <form ng-submit="addPost()" style="margin-top:30px;">
@@ -42,5 +45,21 @@
         </div>
       </script>
     </div>
+    <script type="text/ng-template" id="/posts.html">
+      <div class="page-header">
+        <h3>
+          {{post.room_no}} - {{post.name}}
+        </h3>
+      </div>
+
+      <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
+        <span class="glyphicon glyphicon-thumbs-up"
+          ng-click="incrementUpvotes(comment)"></span>
+        {{comment.upvotes}} - by {{comment.author}}
+        <span style="font-size:20px; margin-left:10px;">
+          {{comment.body}}
+        </span>
+      </div>
+    </script>
   </body>
 </html>
