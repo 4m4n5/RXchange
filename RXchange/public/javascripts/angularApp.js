@@ -9,7 +9,14 @@ app.config([
       .state('home', {
         url: '/home',
         templateUrl: '/home.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve: {
+          postPromise: ['posts',
+            function(posts) {
+              return posts.getAll();
+            }
+          ]
+        }
       });
     $stateProvider
       .state('posts', {
@@ -21,9 +28,9 @@ app.config([
   }
 ]);
 
-app.factory('posts', [
+app.factory('posts', ['$http',
 
-  function() {
+  function($http) {
     var o = {
       posts: [{
         room_no: 'post 1',
@@ -39,6 +46,16 @@ app.factory('posts', [
           upvotes: 10
         }]
       }]
+    };
+    o.getAll = function() {
+      return $http.get('/posts').success(function(data) {
+        angular.copy(data, o.posts);
+      });
+    };
+    o.create = function(post) {
+      return $http.post('/posts', post).success(function(data) {
+        o.posts.push(data);
+      });
     };
     return o;
   }
