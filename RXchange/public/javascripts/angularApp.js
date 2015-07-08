@@ -78,6 +78,10 @@ app.controller('MainCtrl', [
       $scope.posts.push({
         room_no: $scope.room_no,
         name: $scope.name,
+        preference: $scope.preference,
+        mobile: $scope.mobile,
+        email: $scope.email,
+        password: $scope.password,
         interests: 0,
         comments: [{
           author: 'Bablooo',
@@ -91,8 +95,13 @@ app.controller('MainCtrl', [
       });
       $scope.room_no = '';
       $scope.name = '';
+      $scope.preference = '';
+      $scope.mobile = '';
+      $scope.email = '';
+      $scope.password = '';
     };
     $scope.incrementInterests = function(post) {
+      console.log(post);
       post.interests += 1;
     };
   }

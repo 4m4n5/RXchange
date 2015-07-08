@@ -12,6 +12,9 @@ var users = require('./routes/users');
 
 var app = express();
 
+// importing schema
+require('./models/Posts');
+require('./models/Comments');
 // connect to db
 mongoose.connect('mongodb://localhost/rxchange_test');
 
