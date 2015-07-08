@@ -7,14 +7,15 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 
+// importing schema
+require('./models/Posts');
+require('./models/Comments');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 
-// importing schema
-require('./models/Posts');
-require('./models/Comments');
 // connect to db
 mongoose.connect('mongodb://localhost/rxchange_test');
 

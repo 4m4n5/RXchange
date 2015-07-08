@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 var Comment = mongoose.model('Comment');
 
+// to get all posts
 router.get('/posts', function(req, res, next) {
   Post.find(function(err, posts) {
     if (err) {
@@ -15,6 +16,7 @@ router.get('/posts', function(req, res, next) {
   });
 });
 
+// to add a new post
 router.post('/posts', function(req, res, next) {
   var post = new Post(req.body);
 
@@ -26,6 +28,8 @@ router.post('/posts', function(req, res, next) {
     res.json(post);
   });
 });
+
+
 
 
 /* GET home page. */
