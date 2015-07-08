@@ -106,9 +106,9 @@ app.factory('auth', ['$http', '$window',
   }
 ]);
 
-app.factory('posts', ['$http',
+app.factory('posts', ['$http', 'auth',
 
-  function($http) {
+  function($http, auth) {
     var o = {
       posts: [{
         room_no: 'post 1',
@@ -131,12 +131,20 @@ app.factory('posts', ['$http',
       });
     };
     o.create = function(post) {
-      return $http.post('/posts', post).success(function(data) {
+      return $http.post('/posts', post, {
+        headers: {
+          Authorization: 'Bearer ' + auth.getToken()
+        }
+      }).success(function(data) {
         o.posts.push(data);
       });
     };
     o.upvote = function(post) {
-      return $http.put('/posts/' + post._id + '/upvote')
+      return $http.put('/posts/' + post._id + '/upvote', null, {
+          headers: {
+            Authorization: 'Bearer ' + auth.getToken()
+          }
+        })
         .success(function(data) {
           post.interests += 1;
         });
@@ -147,10 +155,18 @@ app.factory('posts', ['$http',
       });
     };
     o.addComment = function(id, comment) {
-      return $http.post('/posts/' + id + '/comments', comment);
+      return $http.post('/posts/' + id + '/comments', comment, {
+        headers: {
+          Authorization: 'Bearer ' + auth.getToken()
+        }
+      });
     };
     o.upvoteComment = function(post, comment) {
-      return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/upvote')
+      return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/upvote', null, {
+          headers: {
+            Authorization: 'Bearer ' + auth.getToken()
+          }
+        })
         .success(function(data) {
           comment.upvotes += 1;
         });
