@@ -69,7 +69,16 @@ app.controller('MainCtrl', [
       $scope.posts.push({
         room_no: $scope.room_no,
         name: $scope.name,
-        interests: 0
+        interests: 0,
+        comments: [{
+          author: 'Bablooo',
+          body: 'Alag he machai!',
+          upvotes: 0
+        }, {
+          author: 'Tiploo',
+          body: 'Girls hostel dikhta hai iha se!',
+          upvotes: 10
+        }]
       });
       $scope.room_no = '';
       $scope.name = '';
