@@ -28,7 +28,16 @@ app.factory('posts', [
       posts: [{
         room_no: 'post 1',
         interests: 5,
-        name: 'foo'
+        name: 'foo',
+        comments: [{
+          author: 'Bablooo',
+          body: 'Alag he machai!',
+          upvotes: 0
+        }, {
+          author: 'Tiploo',
+          body: 'Girls hostel dikhta hai iha se!',
+          upvotes: 10
+        }]
       }]
     };
     return o;
@@ -97,6 +106,17 @@ app.controller('PostsCtrl', [
     $scope.post = posts.posts[$stateParams.id];
     $scope.incrementUpvotes = function(post) {
       post.upvotes += 1;
+    };
+    $scope.addComment = function() {
+      if ($scope.body === '') {
+        return;
+      }
+      $scope.post.comments.push({
+        body: $scope.body,
+        author: 'user',
+        upvotes: 0
+      });
+      $scope.body = '';
     };
   }
 ]);
