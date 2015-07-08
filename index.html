@@ -9,36 +9,38 @@
     <script src="app.js"></script>
     <style> .glyphicon-thumbs-up { cursor:pointer } </style>
   </head>
-  <body ng-app="RXchange" ng-controller="MainCtrl">
+  <body ng-app="RXchange">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-
-      <div class="page-header">
-        <h1>
-          RXchange
-        </h1>
-      </div>
-        <div ng-repeat="post in posts | orderBy:'-interests'">
-          <span class="glyphicon glyphicon-thumbs-up"
-          ng-click="incrementInterests(post)"></span>
-          {{post.interests}}
-          <span style="font-size:20px; margin-left:10px;">
-            {{post.room_no}} - submitted by: {{post.name}}
-          </span>
+      <ui-view></ui-view>
+      <script type="text/ng-template" id="/home.html">
+        <div class="page-header">
+          <h1>
+            RXchange
+          </h1>
         </div>
-
-        <form ng-submit="addPost()" style="margin-top:30px;">
-          <h3>Add a New Room to market</h3>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Room No" ng-model="room_no"></input>
+          <div ng-repeat="post in posts | orderBy:'-interests'">
+            <span class="glyphicon glyphicon-thumbs-up"
+            ng-click="incrementInterests(post)"></span>
+            {{post.interests}}
+            <span style="font-size:20px; margin-left:10px;">
+              {{post.room_no}} - submitted by: {{post.name}}
+            </span>
           </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Your Name" ng-model="name"></input>
-          </div>
-          <button type="submit" class="btn btn-primary">Post</button>
-        </form>
 
-      </div>
+          <form ng-submit="addPost()" style="margin-top:30px;">
+            <h3>Add a New Room to market</h3>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Room No" ng-model="room_no"></input>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Name" ng-model="name"></input>
+            </div>
+            <button type="submit" class="btn btn-primary">Post</button>
+          </form>
+
+        </div>
+      </script>
     </div>
   </body>
 </html>
