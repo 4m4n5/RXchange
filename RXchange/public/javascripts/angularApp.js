@@ -176,10 +176,11 @@ app.factory('posts', ['$http', 'auth',
 ]);
 
 app.controller('MainCtrl', [
-  '$scope', 'posts',
-  function($scope, posts) {
+  '$scope', 'posts', 'auth',
+  function($scope, posts, auth) {
     $scope.test = 'Hello world!';
     $scope.posts = posts.posts;
+    $scope.isLoggedIn = auth.isLoggedIn;
     // $scope.posts = [{
     //   room_no: 'post 1',
     //   interests: 5,
@@ -233,8 +234,10 @@ app.controller('PostsCtrl', [
   '$scope',
   'posts',
   'post',
-  function($scope, posts, post) {
+  'auth',
+  function($scope, posts, post, auth) {
     $scope.post = post;
+    $scope.isLoggedIn = auth.isLoggedIn;
     $scope.incrementUpvotes = function(comment) {
       posts.upvoteComment(post, comment);
     };
