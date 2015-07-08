@@ -11,7 +11,12 @@ app.config([
         templateUrl: '/home.html',
         controller: 'MainCtrl'
       });
-
+    $stateProvider
+      .state('posts', {
+        url: '/posts/{id}',
+        templateUrl: '/posts.html',
+        controller: 'PostsCtrl'
+      });
     $urlRouterProvider.otherwise('home');
   }
 ]);
@@ -72,5 +77,14 @@ app.controller('MainCtrl', [
     $scope.incrementInterests = function(post) {
       post.interests += 1;
     };
+  }
+]);
+
+app.controller('PostsCtrl', [
+  '$scope',
+  '$stateParams',
+  'posts',
+  function($scope, $stateParams, posts) {
+
   }
 ]);
