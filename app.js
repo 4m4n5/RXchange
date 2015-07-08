@@ -1,8 +1,18 @@
 var app = angular.module('RXchange', []);
 
+app.factory('posts', [
+
+  function() {
+    var o = {
+      posts: []
+    };
+    return o;
+  }
+]);
+
 app.controller('MainCtrl', [
-  '$scope',
-  function($scope) {
+  '$scope', 'posts',
+  function($scope, posts) {
     $scope.test = 'Hello world!';
     $scope.posts = [{
       room_no: 'post 1',
