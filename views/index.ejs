@@ -19,66 +19,64 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/ng-animations.css">
   </head>
   <body>
-      <nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
-      <ul class="nav navbar-nav">
-        <li ng-if="isLoggedIn()"><a href="/#/home">Home</a></li>
-        <li ng-if="isLoggedIn()"><a>{{ currentUser() }}</a></li>
-        <li ng-if="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
-        <li ng-if="!isLoggedIn()"><a href="/#/login">Log In</a></li>
-        <li ng-if="!isLoggedIn()"><a href="/#/register">Register</a></li>
-      </ul>
-    </nav>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="ui-view-container">
-          <div class="slide-top" ui-view></div>
-        </div>
+    <header class="head">
+      <div class="logo pull-left">
+        <h3 class=""><a href="/#/home">RXchange</a></h3>
       </div>
+      <div class="pull-right" ng-controller="NavCtrl" ng-init="viewForm = false">
+        <ul class="navigation">
+          <li ng-if="isLoggedIn()"><a href="/#/home">Home</a></li>
+          <li ng-if="isLoggedIn()"><a>{{ currentUser() }}</a></li>
+          <li ng-if="isLoggedIn()"><a href="#" ng-click="logOut()">Log Out</a></li>
+          <li ng-if="!isLoggedIn()"><a href="/#/login">Log In</a></li>
+          <li ng-if="!isLoggedIn()"><a href="/#/register">Register</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="ui-view-container">
+      <div class="slide-top tpadding30" ui-view></div>
     </div>
     <script type="text/ng-template" id="/home.html">
-        <div class="page-header">
-          <h1>
-            RXchange
-          </h1>
-        </div>
-        <div ng-repeat="post in posts | orderBy:'-interests'">
-          <span class="glyphicon glyphicon-thumbs-up"
-          ng-click="incrementInterests(post)"></span>
-          {{post.interests}}
-          <span style="font-size:20px; margin-left:10px;">
-            {{post.room_no}} - submitted by: {{post.name}}
-          </span>
-          <span>
-            <a href="#/posts/{{post._id}}">Comments</a>
-          </span>
-        </div>
+      <div ng-if="!isLoggedIn()">
+        <h3 class="tmargin0 bmargin30">You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a room.</h3>
+      </div>
+      <div ng-if="isLoggedIn()">
+        <h3 class="tmargin0 bmargin30">
+        <i class="fa"
+          ng-click="viewForm = !viewForm"
+          ng-class="{'fa-plus-circle': !viewForm, 'fa-minus-circle': viewForm}"></i>&nbsp;Add a New Room to market</h3>
+      </div>
 
-        <div ng-hide="isLoggedIn()">
-          <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a room.</h3>
+      <form ng-submit="addPost()" ng-if="isLoggedIn()">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Room No" ng-model="room_no"></input>
         </div>
-        <form ng-submit="addPost()" ng-show="isLoggedIn()" style="margin-top:30px;">
-          <h3>Add a New Room to market</h3>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Room No" ng-model="room_no"></input>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Your Name" ng-model="name"></input>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Preference" ng-model="preference"></input>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email Id" ng-model="email"></input>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Mobile Number" ng-model="mobile"></input>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Password" ng-model="password"></input>
-          </div>
-          <button type="submit" class="btn btn-primary">Post</button>
-        </form>
-      </script>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Your Name" ng-model="name"></input>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Preference" ng-model="preference"></input>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Email Id" ng-model="email"></input>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Mobile Number" ng-model="mobile"></input>
+        </div>
+        <button type="submit" class="btn btn-primary">Post</button>
+      </form>
+
+      <div ng-repeat="post in posts | orderBy:'-interests'" class="room-tile toggle">
+        <div class="room" ng-bind="post.room_no"></div>
+        <div class="owner">Currently alloted to {{post.name}}</div>
+        <span class="interests">
+          <i class="fa fa-thumbs-o-up" ng-click="incrementInterests(post)"></i> {{post.interests}}
+        </span>
+        <span class="comments">
+          <a href="#/posts/{{post._id}}">Comments</a>
+        </span>
+      </div>
+    </script>
     <script type="text/ng-template" id="/posts.html">
       <div class="page-header">
         <h3>
