@@ -20,7 +20,7 @@ var users = require('./routes/users');
 var app = express();
 
 // connect to db
-mongoose.connect('mongodb://localhost/rxchange_test');
+mongoose.connect('mongodb://aman:thermo@ds045608.mongolab.com:45608/rx_change');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -74,3 +74,4 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+pp;
