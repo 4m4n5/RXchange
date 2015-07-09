@@ -4,7 +4,6 @@ var PostSchema = new mongoose.Schema({
   room_no: String,
   name: String,
   preference: String,
-  password: String,
   interests: {
     type: Number,
     default: 0

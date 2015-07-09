@@ -35,7 +35,6 @@ app.controller('MainCtrl', ['$scope', '$rootScope', 'posts', 'auth',
         preference: $scope.preference,
         mobile: $scope.mobile,
         email: $scope.email,
-        password: $scope.password,
         interests: 0,
       });
       $scope.room_no = '';
@@ -43,11 +42,9 @@ app.controller('MainCtrl', ['$scope', '$rootScope', 'posts', 'auth',
       $scope.preference = '';
       $scope.mobile = '';
       $scope.email = '';
-      $scope.password = '';
     };
 
     $scope.incrementInterests = function(post) {
-      console.log(post);
       posts.upvote(post);
     };
   }

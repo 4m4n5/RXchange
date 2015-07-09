@@ -13,12 +13,12 @@ passport.use(new LocalStrategy(
       }
       if (!user) {
         return done(null, false, {
-          message: 'Incorrect username.'
+          message: 'The username or password that you entered is incorrect.'
         });
       }
       if (!user.validPassword(password)) {
         return done(null, false, {
-          message: 'Incorrect password.'
+          message: 'The password that you entered is incorrect.'
         });
       }
       return done(null, user);
