@@ -47,7 +47,7 @@
           ng-class="{'fa-plus-circle': !viewForm, 'fa-minus-circle': viewForm}"></i>&nbsp;Add a New Room to market</h3>
       </div>
 
-      <form ng-submit="addPost()" ng-if="isLoggedIn()">
+      <form ng-submit="addPost()" ng-show="isLoggedIn()">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Room No" ng-model="room_no"></input>
         </div>

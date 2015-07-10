@@ -16,7 +16,15 @@ var PostSchema = new mongoose.Schema({
     type: String,
     lowercase: true
   },
-  mobile: String
+  mobile: String,
+  pub_date: {
+    type: Date,
+    default: Date.now
+  },
+  active: {
+    type: Boolean,
+    default: true
+  }
 });
 
 PostSchema.methods.upvote = function(cb) {
