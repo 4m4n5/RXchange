@@ -23,7 +23,7 @@
       <div class="logo pull-left">
         <h3 class=""><a href="/#/home">RXchange</a></h3>
       </div>
-      <div class="pull-right" ng-controller="NavCtrl" ng-init="viewForm = false">
+      <div class="pull-right" ng-controller="NavCtrl">
         <ul class="navigation">
           <li ng-if="isLoggedIn()"><a href="/#/home">Home</a></li>
           <li ng-if="isLoggedIn()"><a>{{ currentUser() }}</a></li>
@@ -47,9 +47,13 @@
           ng-class="{'fa-plus-circle': !viewForm, 'fa-minus-circle': viewForm}"></i>&nbsp;Add a New Room to market</h3>
       </div>
 
-      <form ng-submit="addPost()" ng-show="isLoggedIn()">
+      <form ng-submit="addPost()" ng-if="isLoggedIn()" class="form-inline">
         <div class="form-group">
+        <label>Room No</label>
           <input type="text" class="form-control" placeholder="Room No" ng-model="room_no"></input>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Bhawan" ng-model="bhawan"></input>
         </div>
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Your Name" ng-model="name"></input>
@@ -66,14 +70,25 @@
         <button type="submit" class="btn btn-primary">Post</button>
       </form>
 
-      <div ng-repeat="post in posts | orderBy:'-interests'" class="room-tile toggle">
-        <div class="room" ng-bind="post.room_no"></div>
-        <div class="owner">Currently alloted to {{post.name}}</div>
+      <div ng-repeat="post in posts | orderBy:'pub_date':true" class="room-tile toggle">
+        <div class="room">{{post.room_no}}, {{post.bhawan}}</div>
+        <div class="owner">Currently alloted to <span class="text-capitalize">{{post.name}}</span></div>
+        <div class="preference">Interested in <span class="text-capitalize">{{post.preference}}</span></div>
+        <div class="btn contact"
+          ng-if="!post.showContacts"
+          ng-click="post.showContacts = !post.showContacts">
+          <i class="fa fa-phone"></i>&nbsp;Contact
+        </div>
+        <div class="contact-details" ng-if="post.showContacts">
+          <span class="text-capitalize fs18">{{post.name}}</span><br>
+          <span class="grey"><i class="fa fa-paper-plane-o"></i>&nbsp;{{post.email}}</span><br>
+          <span class="grey"><i class="fa fa-phone"></i>&nbsp;{{post.mobile}}</span>
+        </div>
         <span class="interests">
           <i class="fa fa-thumbs-o-up" ng-click="incrementInterests(post)"></i> {{post.interests}}
         </span>
         <span class="comments">
-          <a href="#/posts/{{post._id}}">Comments</a>
+          <a href="#/posts/{{post._id}}"><i class="fa fa-comments-o"></i>&nbsp;Comment</a>
         </span>
       </div>
     </script>

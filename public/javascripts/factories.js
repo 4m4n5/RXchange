@@ -71,6 +71,9 @@ app.factory('posts', ['$http', 'auth',
 
     o.getAll = function() {
       return $http.get('/posts').success(function(data) {
+        angular.forEach(data, function(value, index) {
+          value.showContacts = false; // Only for frontend display purposes
+        });
         angular.copy(data, o.posts);
       });
     };
@@ -81,6 +84,7 @@ app.factory('posts', ['$http', 'auth',
           Authorization: 'Bearer ' + auth.getToken()
         }
       }).success(function(data) {
+        data.showContacts = false;
         o.posts.push(data);
       });
     };
@@ -97,6 +101,7 @@ app.factory('posts', ['$http', 'auth',
 
     o.get = function(id) {
       return $http.get('/posts/' + id).then(function(res) {
+        res.data.showContacts = false;
         return res.data;
       });
     };

@@ -32,6 +32,7 @@ app.controller('MainCtrl', ['$scope', '$rootScope', 'posts', 'auth',
       posts.create({
         room_no: $scope.room_no,
         name: $scope.name,
+        bhawan: $scope.bhawan,
         preference: $scope.preference,
         mobile: $scope.mobile,
         email: $scope.email,
@@ -39,6 +40,7 @@ app.controller('MainCtrl', ['$scope', '$rootScope', 'posts', 'auth',
       });
       $scope.room_no = '';
       $scope.name = '';
+      $scope.bhawan = '';
       $scope.preference = '';
       $scope.mobile = '';
       $scope.email = '';
@@ -97,8 +99,9 @@ app.controller('AuthCtrl', ['$scope', '$state', 'auth',
   }
 ]);
 
-app.controller('NavCtrl', ['$scope', 'auth',
-  function($scope, auth) {
+app.controller('NavCtrl', ['$scope', '$rootScope', 'auth',
+  function($scope, $rootScope, auth) {
+    $rootScope.viewForm = false;
     $scope.isLoggedIn = auth.isLoggedIn;
     $scope.currentUser = auth.currentUser;
     $scope.logOut = auth.logOut;

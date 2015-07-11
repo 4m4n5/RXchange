@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var PostSchema = new mongoose.Schema({
   room_no: String,
   name: String,
+  bhawan: String,
   preference: String,
   interests: {
     type: Number,
