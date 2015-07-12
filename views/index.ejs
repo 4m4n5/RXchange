@@ -25,20 +25,19 @@
       </div>
       <div class="pull-right" ng-controller="NavCtrl">
         <ul class="navigation">
-          <li ng-if="isLoggedIn()"><a href="/#/home">Home</a></li>
-          <li ng-if="isLoggedIn()"><a>{{ currentUser() }}</a></li>
+          <li ng-if="isLoggedIn()"><a href="/#/home">{{ currentUser() }}</a></li>
           <li ng-if="isLoggedIn()"><a href="#" ng-click="logOut()">Log Out</a></li>
           <li ng-if="!isLoggedIn()"><a href="/#/login">Log In</a></li>
-          <li ng-if="!isLoggedIn()"><a href="/#/register">Register</a></li>
+          <li ng-if="!isLoggedIn()"><a href="/#/register">Sign Up</a></li>
         </ul>
       </div>
     </header>
-    <div class="ui-view-container">
-      <div class="slide-top tpadding30" ui-view></div>
+    <div class="ui-view-container row">
+      <div class="slide-top tpadding30 col-lg-6 col-lg-offset-3" ui-view></div>
     </div>
     <script type="text/ng-template" id="/home.html">
       <div ng-if="!isLoggedIn()">
-        <h3 class="tmargin0 bmargin30">You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a room.</h3>
+        <h3 class="tmargin0 bmargin30">You need to <a href="/#/login">Log In</a> or <a href="/#/register">Sign Up</a> before you can add a room.</h3>
       </div>
       <div ng-if="isLoggedIn()">
         <h3 class="tmargin0 bmargin30">
@@ -74,10 +73,10 @@
         <div class="room">{{post.room_no}}, {{post.bhawan}}</div>
         <div class="owner">Currently alloted to <span class="text-capitalize">{{post.name}}</span></div>
         <div class="preference">Interested in <span class="text-capitalize">{{post.preference}}</span></div>
-        <div class="btn contact"
+        <div class="btn button contact"
           ng-if="!post.showContacts"
           ng-click="post.showContacts = !post.showContacts">
-          <i class="fa fa-phone"></i>&nbsp;Contact
+          Contact&nbsp;<i class="fa fa-paper-plane"></i>
         </div>
         <div class="contact-details" ng-if="post.showContacts">
           <span class="text-capitalize fs18">{{post.name}}</span><br>
@@ -127,58 +126,64 @@
     </script>
     <script type="text/ng-template" id="/register.html">
       <div class="page-header">
-        <h1>RXchange</h1>
+        <h2>Sign Up</h2>
       </div>
 
-      <div ng-show="error" class="alert alert-danger row">
+      <div ng-show="error" class="alert alert-danger">
         <span>{{ error.message }}</span>
       </div>
 
-      <form ng-submit="register()"
-        style="margin-top:30px;">
-        <h3>Register</h3>
-
+      <form ng-submit="register()" class="form-horizontal">
         <div class="form-group">
-          <input type="text"
-          class="form-control"
-          placeholder="Username"
-          ng-model="user.username"></input>
+          <label class="control-label col-lg-2">Username</label>
+          <div class="col-lg-6">
+            <input type="text"
+              class="form-control"
+              placeholder="Your special agent name"
+              ng-model="user.username"></input>
+          </div>
         </div>
         <div class="form-group">
-          <input type="password"
-          class="form-control"
-          placeholder="Password"
-          ng-model="user.password"></input>
+          <label class="control-label col-lg-2">Password</label>
+          <div class="col-lg-6">
+            <input type="password"
+              class="form-control"
+              placeholder="Biometric print"
+              ng-model="user.password"></input>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-lg button tmargin20">Sign Up&nbsp;<i class="fa fa-user-plus"></i></button>
       </form>
     </script>
     <script type="text/ng-template" id="/login.html">
       <div class="page-header">
-        <h1>RXchange</h1>
+        <h2>Log In</h2>
       </div>
 
-      <div ng-show="error" class="alert alert-danger row">
+      <div ng-show="error" class="alert alert-danger">
         <span>{{ error.message }}</span>
       </div>
 
-      <form ng-submit="logIn()"
-        style="margin-top:30px;">
-        <h3>Log In</h3>
-
+      <form ng-submit="logIn()" class="form-horizontal">
         <div class="form-group">
-          <input type="text"
-          class="form-control"
-          placeholder="Username"
-          ng-model="user.username"></input>
+          <label class="control-label col-lg-2">Username</label>
+          <div class="col-lg-6">
+            <input type="text"
+              class="form-control"
+              placeholder="Your special agent name"
+              ng-model="user.username"></input>
+          </div>
         </div>
         <div class="form-group">
-          <input type="password"
-          class="form-control"
-          placeholder="Password"
-          ng-model="user.password"></input>
+          <label class="control-label col-lg-2">Password</label>
+          <div class="col-lg-6">
+            <input type="password"
+              class="form-control"
+              placeholder="Biometric print"
+              ng-model="user.password"></input>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Log In</button>
+        <button type="submit" class="btn btn-lg button tmargin20">Log In&nbsp;<i class="fa fa-sign-in"></i></button>
       </form>
     </script>
   </body>

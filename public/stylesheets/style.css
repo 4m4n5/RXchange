@@ -30,6 +30,9 @@ a:hover, a:focus {
 .tpadding30 {
   padding-top: 30px;
 }
+.tmargin20 {
+  margin-top: 20px;
+}
 .bmargin30 {
   margin-bottom: 30px;
 }
@@ -38,9 +41,28 @@ a:hover, a:focus {
 }
 .ui-view-container {
   position: relative;
-  width: 50%;
-  height: auto;
-  margin: 0 auto;
+}
+.button {
+  background-color: #e9bf00;
+  color: #fff;
+  transition: all 250ms ease-out;
+  -webkit-transition: all 250ms ease-out;
+}
+.button:hover, .button:focus {
+  background-color: #ffd700;
+  color: #fff;
+}
+.button i {
+  margin-left: 10px;
+  transition: all 250ms ease-out;
+  -webkit-transition: all 250ms ease-out;
+}
+.button:hover i {
+  margin-left: 20px;
+}
+/* Override bootstrap here */
+.page-header {
+  margin: 0 0 40px;
 }
 
 /* ========
@@ -134,11 +156,6 @@ a:hover, a:focus {
   position: absolute;
   top: 20px;
   right: 40px;
-  background-color: #e9bf00;
-  color: #fff;
-}
-.room-tile .contact:hover {
-  background-color: #ffd700;
 }
 .room-tile .contact-details {
   position: absolute;
