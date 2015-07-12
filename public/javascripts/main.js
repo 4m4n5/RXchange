@@ -1,4 +1,4 @@
-var app = angular.module('RXchange', ['ui.router']);
+var app = angular.module('RXchange', ['ui.router', 'ngAnimate']);
 
 app.config(['$stateProvider', '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {

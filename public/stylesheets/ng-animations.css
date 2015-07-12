@@ -104,8 +104,8 @@
   transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
-  transition-duration: 400ms;
-  -webkit-transition-duration: 400ms;
+  transition-duration: 10ms;
+  -webkit-transition-duration: 10ms;
   opacity: 1;
 }
 /* line 128, ../sass/ng-animation.scss */
@@ -122,8 +122,8 @@
   transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
-  transition-duration: 400ms;
-  -webkit-transition-duration: 400ms;
+  transition-duration: 10ms;
+  -webkit-transition-duration: 10ms;
   opacity: 1;
 }
 /* line 139, ../sass/ng-animation.scss */
@@ -140,8 +140,8 @@
   transform: translateY(60px);
   -ms-transform: translateY(60px);
   -webkit-transform: translateY(60px);
-  transition-duration: 400ms;
-  -webkit-transition-duration: 400ms;
+  transition-duration: 10ms;
+  -webkit-transition-duration: 10ms;
   display: block !important;
   opacity: 0;
 }
@@ -193,8 +193,8 @@
   transform: translateX(0);
   -ms-transform: translateX(0);
   -webkit-transform: translateX(0);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  transition-duration: 10ms;
+  -webkit-transition-duration: 10ms;
   opacity: 1;
 }
 /* line 182, ../sass/ng-animation.scss */
@@ -209,8 +209,8 @@
   transform: translateX(0);
   -ms-transform: translateX(0);
   -webkit-transform: translateX(0);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  transition-duration: 10ms;
+  -webkit-transition-duration: 10ms;
   opacity: 1;
 }
 /* line 193, ../sass/ng-animation.scss */
@@ -261,8 +261,8 @@
   transform: translateX(-60px);
   -ms-transform: translateX(-60px);
   -webkit-transform: translateX(-60px);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  transition-duration: 350ms;
+  -webkit-transition-duration: 350ms;
   opacity: 0;
 }
 /* line 225, ../sass/ng-animation.scss */
@@ -277,8 +277,8 @@
   transform: translateX(0);
   -ms-transform: translateX(0);
   -webkit-transform: translateX(0);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  transition-duration: 350ms;
+  -webkit-transition-duration: 350ms;
   opacity: 1;
 }
 /* line 236, ../sass/ng-animation.scss */
@@ -293,8 +293,8 @@
   transform: translateX(0);
   -ms-transform: translateX(0);
   -webkit-transform: translateX(0);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  transition-duration: 350ms;
+  -webkit-transition-duration: 350ms;
   opacity: 1;
 }
 /* line 247, ../sass/ng-animation.scss */
@@ -309,8 +309,8 @@
   transform: translateX(-60px);
   -ms-transform: translateX(-60px);
   -webkit-transform: translateX(-60px);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  transition-duration: 350ms;
+  -webkit-transition-duration: 350ms;
   display: block !important;
   opacity: 0;
 }
@@ -345,8 +345,8 @@
   transform: translateY(-60px);
   -ms-transform: translateY(-60px);
   -webkit-transform: translateY(-60px);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  transition-duration: 350ms;
+  -webkit-transition-duration: 350ms;
   opacity: 0;
 }
 /* line 279, ../sass/ng-animation.scss */
@@ -361,8 +361,8 @@
   transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  transition-duration: 350ms;
+  -webkit-transition-duration: 350ms;
   opacity: 1;
 }
 /* line 290, ../sass/ng-animation.scss */
@@ -377,8 +377,8 @@
   transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  transition-duration: 350ms;
+  -webkit-transition-duration: 350ms;
   opacity: 1;
 }
 /* line 301, ../sass/ng-animation.scss */
@@ -393,8 +393,8 @@
   transform: translateY(-60px);
   -ms-transform: translateY(-60px);
   -webkit-transform: translateY(-60px);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
+  transition-duration: 350ms;
+  -webkit-transition-duration: 350ms;
   display: block !important;
   opacity: 0;
 }

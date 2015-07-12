@@ -13,7 +13,7 @@ passport.use(new LocalStrategy(
       }
       if (!user) {
         return done(null, false, {
-          message: 'The username or password that you entered is incorrect.'
+          message: 'The username/password that you entered is incorrect or the user does not exist.'
         });
       }
       if (!user.validPassword(password)) {

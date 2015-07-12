@@ -77,22 +77,35 @@ app.controller('PostsCtrl', ['$scope', 'posts', 'post', 'auth',
   }
 ]);
 
-app.controller('AuthCtrl', ['$scope', '$state', 'auth',
-  function($scope, $state, auth) {
+app.controller('AuthCtrl', ['$scope', '$rootScope', '$state', 'auth',
+  function($scope, $rootScope, $state, auth) {
     $scope.user = {};
 
     $scope.register = function() {
+      $rootScope.loading = true;
+      if ($scope.user.username)
+        $scope.user.username = $scope.user.username.trim();
+      if ($scope.user.fullname)
+        $scope.user.fullname = $scope.user.fullname.trim();
+      if ($scope.user.email)
+        $scope.user.email = $scope.user.email.trim();
+
       auth.register($scope.user).error(function(error) {
+        $rootScope.loading = false;
         $scope.error = error;
       }).then(function() {
+        $rootScope.loading = false;
         $state.go('home');
       });
     };
 
     $scope.logIn = function() {
+      $rootScope.loading = true;
       auth.logIn($scope.user).error(function(error) {
+        $rootScope.loading = false;
         $scope.error = error;
       }).then(function() {
+        $rootScope.loading = false;
         $state.go('home');
       });
     };
@@ -101,7 +114,7 @@ app.controller('AuthCtrl', ['$scope', '$state', 'auth',
 
 app.controller('NavCtrl', ['$scope', '$rootScope', 'auth',
   function($scope, $rootScope, auth) {
-    $rootScope.viewForm = false;
+    $rootScope.loading = false;
     $scope.isLoggedIn = auth.isLoggedIn;
     $scope.currentUser = auth.currentUser;
     $scope.logOut = auth.logOut;
