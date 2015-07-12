@@ -42,6 +42,12 @@ a:hover, a:focus {
 .tmargin0 {
   margin-top: 0;
 }
+.bmargin10 {
+  margin-bottom: 10px;
+}
+.bmargin5 {
+  margin-bottom: 5px;
+}
 .ui-view-container {
   position: relative;
 }
@@ -161,4 +167,16 @@ a:hover, a:focus {
   right: 40px;
   text-align: right;
   font-size: 18px;
+}
+
+.comment {
+  margin-bottom: 20px;
+}
+.comment .upvotes {
+  color: #08c;
+  cursor: pointer;
+}
+.comment .upvotes:hover {
+  color: #059;
+  cursor: pointer;
 }

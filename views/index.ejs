@@ -83,8 +83,8 @@
           <span class="grey"><i class="fa fa-envelope"></i>&nbsp;{{post.email}}</span><br>
           <span class="grey"><i class="fa fa-phone"></i>&nbsp;{{post.mobile}}</span>
         </div>
-        <span class="interests">
-          <i class="fa fa-thumbs-o-up" ng-click="incrementInterests(post)"></i> {{post.interests}}
+        <span class="interests" ng-click="incrementInterests(post)">
+          <i class="fa fa-thumbs-o-up"></i> {{post.interests}}
         </span>
         <span class="comments">
           <a href="#/posts/{{post._id}}"><i class="fa fa-comments-o"></i>&nbsp;Comment ({{post.comments.length}})</a>
@@ -92,36 +92,41 @@
       </div>
     </script>
     <script type="text/ng-template" id="/posts.html">
-      <div class="page-header">
-        <h3>
-          {{post.room_no}} - {{post.name}}
-        </h3>
+      <div class="row">
+        <div class="page-header col-lg-6">
+          <h3 class="text-capitalize">{{post.room_no}}, {{post.bhawan}}</h3>
+          <h5 class="grey text-light">Currently alloted to <span class="text-capitalize">{{post.name}}</span></h5>
+          <h5>Interested in <span class="text-capitalize">{{post.preference}}</span></h5>
+        </div>
+        <div class="page-header col-lg-6 text-right">
+          <h3 class="text-capitalize">{{post.name}}</h3>
+          <h5 class="grey"><i class="fa fa-envelope"></i>&nbsp;{{post.email}}</h5>
+          <h5 class="grey"><i class="fa fa-phone"></i>&nbsp;{{post.mobile}}</h5>
+        </div>
       </div>
 
-      <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-        <span class="glyphicon glyphicon-thumbs-up"
-          ng-click="incrementUpvotes(comment)"></span>
-        {{comment.upvotes}} - by {{comment.author}}
-        <span style="font-size:20px; margin-left:10px;">
-          {{comment.body}}
-        </span>
+      <div ng-repeat="comment in post.comments" class="comment slide-top">
+        <div class="fs18 bmargin5">
+          <span class="grey text-capitalize">{{comment.author}}:&nbsp;</span>{{comment.body}}
+        </div>
+        <i class="fa fa-thumbs-o-up"></i>&nbsp;{{comment.upvotes}}&nbsp;&nbsp;
+        <span class="upvotes" ng-click="incrementUpvotes(comment)">Upvote</span>
       </div>
 
       <div ng-hide="isLoggedIn()">
-        <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
+        <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Sign Up</a> before you can comment.</h3>
       </div>
+
       <form ng-submit="addComment()"
         ng-show="isLoggedIn()"
-        style="margin-top:30px;">
-        <h3>Add a new comment</h3>
-
-        <div class="form-group">
+        class="tmargin20 row">
+        <div class="form-group col-lg-8">
           <input type="text"
           class="form-control"
-          placeholder="Comment"
+          placeholder="Add a comment"
           ng-model="body"></input>
         </div>
-        <button type="submit" class="btn btn-primary">Post</button>
+        <button type="submit" class="btn button">Post<i class="fa fa-comments-o"></i></button>
       </form>
     </script>
     <script type="text/ng-template" id="/register.html">

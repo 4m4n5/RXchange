@@ -81,7 +81,7 @@ router.put('/posts/:post/upvote', auth, function(req, res, next) {
 router.post('/posts/:post/comments', auth, function(req, res, next) {
   var comment = new Comment(req.body);
   comment.post = req.post;
-  comment.author = req.payload.username;
+  comment.author = req.payload.fullname;
 
   comment.save(function(err, comment) {
     if (err) {
@@ -108,7 +108,7 @@ router.param('comment', function(req, res, next, id) {
       return next(err);
     }
     if (!comment) {
-      return next(new Error('can\'t find comment'));
+      return next(new Error('Can\'t find comment.'));
     }
 
     req.comment = comment;
