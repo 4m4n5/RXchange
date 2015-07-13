@@ -33,6 +33,9 @@ a:hover, a:focus {
 .tpadding30 {
   padding-top: 30px;
 }
+.rpadding0 {
+  padding-right: 0;
+}
 .tmargin20 {
   margin-top: 20px;
 }
@@ -42,8 +45,14 @@ a:hover, a:focus {
 .tmargin0 {
   margin-top: 0;
 }
+.tmargin5 {
+  margin-top: 5px;
+}
 .bmargin10 {
   margin-bottom: 10px;
+}
+.lmargin10 {
+  margin-left: 10px;
 }
 .bmargin5 {
   margin-bottom: 5px;

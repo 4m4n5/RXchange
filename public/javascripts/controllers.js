@@ -26,24 +26,27 @@ app.controller('MainCtrl', ['$scope', '$rootScope', 'posts', 'auth',
     // }];
 
     $scope.addPost = function() {
-      if (!$scope.room_no || $scope.room_no === '' || !$scope.name || $scope.name === '') {
+      if (!$scope.room_no ||
+        $scope.room_no === '' ||
+        !$scope.bhawan ||
+        $scope.bhawan === '' ||
+        !$scope.mobile ||
+        $scope.mobile === '') {
         return;
       }
       posts.create({
         room_no: $scope.room_no,
-        name: $scope.name,
+        name: $rootScope.currentUser().fullname,
         bhawan: $scope.bhawan,
         preference: $scope.preference,
         mobile: $scope.mobile,
-        email: $scope.email,
+        email: $rootScope.currentUser().email,
         interests: 0,
       });
       $scope.room_no = '';
-      $scope.name = '';
       $scope.bhawan = '';
       $scope.preference = '';
       $scope.mobile = '';
-      $scope.email = '';
     };
 
     $scope.incrementInterests = function(post) {
@@ -116,7 +119,7 @@ app.controller('NavCtrl', ['$scope', '$rootScope', 'auth',
   function($scope, $rootScope, auth) {
     $rootScope.loading = false;
     $scope.isLoggedIn = auth.isLoggedIn;
-    $scope.currentUser = auth.currentUser;
+    $rootScope.currentUser = auth.currentUser;
     $scope.logOut = auth.logOut;
   }
 ]);

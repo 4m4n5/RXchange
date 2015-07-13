@@ -41,32 +41,23 @@
       </div>
       <div ng-if="isLoggedIn()">
         <h3 class="tmargin0 bmargin30">
-        <i class="fa"
-          ng-click="viewForm = !viewForm"
-          ng-class="{'fa-plus-circle': !viewForm, 'fa-minus-circle': viewForm}"></i>&nbsp;Add a New Room to market</h3>
+        <i class="fa fa-plus-circle"></i>&nbsp;Add a new room</h3>
       </div>
 
-      <form ng-submit="addPost()" ng-if="isLoggedIn()" class="form-inline">
-        <div class="form-group">
-        <label>Room No</label>
-          <input type="text" class="form-control" placeholder="Room No" ng-model="room_no"></input>
+      <form ng-submit="addPost()" ng-show="isLoggedIn()" class="row bmargin10" validate>
+        <div class="col-lg-5 tmargin5 rpadding0">
+          <input type="text" class="form-control" placeholder="Room No" ng-model="room_no" required></input>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Bhawan" ng-model="bhawan"></input>
+        <div class="col-lg-5 tmargin5 rpadding0">
+          <input type="text" class="form-control" placeholder="Bhawan" ng-model="bhawan" required></input>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Your Name" ng-model="name" ></input>
+        <div class="col-lg-5 tmargin5 rpadding0">
+          <input type="text" class="form-control" placeholder="Preference (Ex: 3rd floor, A block)" ng-model="preference"></input>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Preference" ng-model="preference"></input>
+        <div class="col-lg-5 tmargin5 rpadding0">
+          <input type="text" class="form-control" placeholder="Mobile Number" ng-model="mobile" required></input>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Email Id" ng-model="email"></input>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Mobile Number" ng-model="mobile"></input>
-        </div>
-        <button type="submit" class="btn btn-primary">Post</button>
+        <button type="submit" class="btn btn-primary tmargin5 lmargin10">Add&nbsp;&nbsp;<i class="fa fa-plus-circle"></i></button>
       </form>
 
       <div ng-repeat="post in posts | orderBy:'pub_date':true" class="room-tile slide-right">
